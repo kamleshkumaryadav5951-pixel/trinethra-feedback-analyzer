@@ -98,7 +98,7 @@ function App() {
               <div className="kpi-card glass-panel">
                 <h3>Mapped KPIs</h3>
                 <ul className="kpi-list" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  {result.kpiMapping?.map((item, idx) => (
+                  {result.kpiMapping?.filter(item => item && item.kpi).map((item, idx) => (
                     <li key={idx} style={{ background: 'rgba(0,0,0,0.2)', padding: '10px', borderRadius: '8px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
                         <strong style={{ color: '#c4b5fd' }}>{item.kpi}</strong>
@@ -114,9 +114,9 @@ function App() {
                 
                 <h3 className="mt-4">Gap Analysis</h3>
                 <ul className="gap-list">
-                  {result.gaps?.map((gap, idx) => (
+                  {result.gaps?.filter(gap => gap && gap.dimension).map((gap, idx) => (
                     <li key={idx}>
-                      <strong style={{ color: '#f59e0b', display: 'block', marginBottom: '4px' }}>{gap.dimension.replace('_', ' ').toUpperCase()}</strong>
+                      <strong style={{ color: '#f59e0b', display: 'block', marginBottom: '4px' }}>{gap.dimension?.replace('_', ' ').toUpperCase()}</strong>
                       {gap.detail}
                     </li>
                   ))}
@@ -128,7 +128,7 @@ function App() {
             <div className="evidence-card glass-panel">
               <h3>Extracted Evidence</h3>
               <div className="evidence-grid">
-                {result.evidence?.map((item, idx) => (
+                {result.evidence?.filter(item => item && item.quote).map((item, idx) => (
                   <div key={idx} className={`evidence-item ${item.signal?.toLowerCase()}`}>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <span className="tag-badge">{item.signal}</span>
@@ -147,7 +147,7 @@ function App() {
               <h3>Suggested Follow-up Questions</h3>
               <p className="subtitle">Ask the supervisor these questions in the next call to address gaps:</p>
               <ul className="questions-list">
-                {result.followUpQuestions?.map((q, idx) => (
+                {result.followUpQuestions?.filter(q => q && q.question).map((q, idx) => (
                   <li key={idx}>
                     <span className="q-icon">?</span>
                     <div>
