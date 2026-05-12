@@ -23,7 +23,7 @@ cd backend
 npm install
 npm start
 ```
-The backend will run on `http://localhost:5000`.
+The backend will run on `http://localhost:3001`.
 
 ### Step 3: Start the Frontend
 Open another terminal window, navigate to the `frontend` directory, install dependencies, and start the Vite dev server.
@@ -61,9 +61,9 @@ Instead of making 5 separate LLM calls (which would multiply the latency by 5x),
 ### Challenge 2: Structured Output Reliability
 **Approach:** Enforced JSON Mode & Regex Fallback.
 LLMs notoriously struggle to return *only* JSON without conversational filler. To solve this:
-1. We enforce `format: "json"` in the Ollama API call.
-2. We explicitly instruct the LLM in the prompt to return ONLY JSON without markdown.
-3. We implemented a **Regex Fallback Parser** in the backend (`/\{[\s\S]*\}/`). If `JSON.parse` fails due to stray characters, the regex extracts the JSON block from the string and attempts parsing again.
+1. I enforce `format: "json"` in the Ollama API call.
+2. I explicitly instruct the LLM in the prompt to return ONLY JSON without markdown.
+3. I implemented a **Regex Fallback Parser** in the backend (`/\{[\s\S]*\}/`). If `JSON.parse` fails due to stray characters, the regex extracts the JSON block from the string and attempts parsing again.
 
 ---
 
@@ -71,3 +71,7 @@ LLMs notoriously struggle to return *only* JSON without conversational filler. T
 1. **Side-by-Side Transcript Highlighting:** Implement a feature where clicking on an Extracted Evidence quote on the right side highlights the exact sentence in the raw transcript on the left side.
 2. **Streaming Responses:** Stream the JSON generation in chunks so the UI can progressively render the analysis (e.g., show the Score first while generating Gap Analysis), reducing perceived latency.
 3. **Intern Feedback Loop (RLHF):** Add "Accept", "Reject", or "Edit" buttons next to each LLM suggestion. If an intern corrects a score, we could log that interaction to a database to fine-tune future prompts.
+
+---
+
+**Developed by:** Kamlesh Kumar Yadav
