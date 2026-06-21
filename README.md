@@ -2,7 +2,7 @@
 
 This is a Full-Stack application designed to reduce the manual effort required to analyze supervisor feedback transcripts for DeepThought Fellows from 45-60 minutes down to just a few seconds using local AI (Ollama).
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 Follow these steps to get the app running locally.
 
@@ -36,14 +36,14 @@ Open your browser and navigate to the local URL provided by Vite (usually `http:
 
 ---
 
-## 🧠 Model Choice
+##  Model Choice
 
 **Model Used:** `llama3.2`
 **Why:** It is extremely lightweight, fast, and runs efficiently on most modern laptops without requiring dedicated GPUs. It performs exceptionally well at structured JSON generation and reasoning when provided with strict system prompts.
 
 ---
 
-## 🏗 Architecture Overview
+## Architecture Overview
 
 The application follows a simple decoupled architecture:
 1. **Frontend (React + Vite + Vanilla CSS)**: Provides a premium, glassmorphism UI for the psychology interns to paste transcripts and view structured results.
@@ -52,7 +52,7 @@ The application follows a simple decoupled architecture:
 
 ---
 
-## ⚔️ Design Challenges Tackled
+##  Design Challenges Tackled
 
 ### Challenge 1: One Prompt or Many?
 **Approach:** One Prompt. 
@@ -67,7 +67,7 @@ LLMs notoriously struggle to return *only* JSON without conversational filler. T
 
 ---
 
-## 💡 Future Improvements (With More Time)
+##  Future Improvements (With More Time)
 1. **Side-by-Side Transcript Highlighting:** Implement a feature where clicking on an Extracted Evidence quote on the right side highlights the exact sentence in the raw transcript on the left side.
 2. **Streaming Responses:** Stream the JSON generation in chunks so the UI can progressively render the analysis (e.g., show the Score first while generating Gap Analysis), reducing perceived latency.
 3. **Intern Feedback Loop (RLHF):** Add "Accept", "Reject", or "Edit" buttons next to each LLM suggestion. If an intern corrects a score, we could log that interaction to a database to fine-tune future prompts.
